@@ -27,7 +27,7 @@ PUBLIC_KEY = "Keys/pub.key"
 usn = "13523090"
 pwd = "ghana"
 totp_secret = "kimminjeong" # my istri
-github = "https://github.com/Nayekah/seleksi-sister"
+github = "https://github.com/Nayekah/seleksi-sister/Bagian-B"
 
 
 # Remote Execution Functions and some other functions
@@ -238,9 +238,9 @@ def submit_a(question: str, ans: int, docpath: str)  -> None:
     except requests.exceptions.RequestException as e:
         print(f"Connection error during Stage A submission: {e}")
 
-def submit_b(question: str, ans: int, docpath: str)  -> None:
-    print("\nStarting Stage A submission process...")
-    conn = f"{r}stage-b/submit"
+def submit_b(question: str, ans: int)  -> None:
+    print("\nStarting Stage B submission process...")
+    conn = f"{r}stage-b/submit?username={usn}"
     
     totp_code = totp()
     if not totp_code:
@@ -248,14 +248,7 @@ def submit_b(question: str, ans: int, docpath: str)  -> None:
         return
 
     try:
-        print(f"\nReading PDF '{docpath}' and private key...")
-
-        if not os.path.exists(docpath):
-            print(f"Error: PDF document not found at '{docpath}'.")
-            return
-        
-        with open(docpath, "rb") as f:
-            content = f.read()
+        print(f"\nReading private key...")
 
         if not os.path.exists(PRIVATE_KEY):
             print(f"Error: Private key not found at '{PRIVATE_KEY}'.")
@@ -265,17 +258,18 @@ def submit_b(question: str, ans: int, docpath: str)  -> None:
             private_key_b64 = f.read()
         private_key = base64.b64decode(private_key_b64)
 
-        signature = sign(private_key, content)
-        
+        signature = sign(private_key, github.encode('utf-8'))
+
         signature_b64 = base64.b64encode(signature).decode()
-        print("Document signed successfully.")
+        print("Signed successfully.")
 
     except Exception as e:
-        print(f"Unexpected error during file reading or signing: {e}")
+        print(f"Unexpected error during signing: {e}")
         return
-
-    payload_data = {
-        "username": usn,
+    
+    headers = {'Accept': 'application/json', 'Content-Type': 'application/json'}
+    payload = {
+        "github_url": github,
         "totp_code": totp_code,
         "math_question": question,
         "math_answer": int(ans),
@@ -283,17 +277,12 @@ def submit_b(question: str, ans: int, docpath: str)  -> None:
         "tahap": 1
     }
 
-    payload_files = {
-        "file": (os.path.basename(docpath), content, "application/pdf")
-    }
-
-    print(f"\nPayload data to be sent: {payload_data}")
-    print(f"File to be sent: {os.path.basename(docpath)}")
+    print(f"\nPayload data to be sent: {payload}")
     
     try:
-        response = requests.post(conn, data=payload_data, files=payload_files, timeout=30)
+        response = requests.post(conn, headers=headers, json=payload, timeout=30)
         response.raise_for_status()
-        print("\nStage A submission successful!")
+        print("\nStage B submission successful!")
         print("Response:", response.json())
 
     except requests.exceptions.HTTPError as e:
