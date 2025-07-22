@@ -19,8 +19,8 @@ r = "http://104.214.186.131:8000/"
 
 
 # DON'T TOUCH THIS
-PRIVATE_KEY = "keys/priv.key"
-PUBLIC_KEY = "keys/pub.key"
+PRIVATE_KEY = "Keys/priv.key"
+PUBLIC_KEY = "Keys/pub.key"
 
 
 # MACROS
