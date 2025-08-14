@@ -1,0 +1,98 @@
+.text:000000000040533A ; =============== S U B R O U T I N E =======================================
+.text:000000000040533A
+.text:000000000040533A ; Attributes: bp-based frame
+.text:000000000040533A
+.text:000000000040533A ; char __fastcall main::{lambda(int,int,std::string)#1}::operator()(_QWORD *, int, int, __int64)
+.text:000000000040533A _ZZ4mainENKUliiNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEEE_clEiiS4_ proc near
+.text:000000000040533A                                         ; CODE XREF: std::__invoke_impl<void,main::{lambda(int,int,std::string)#1} &,int,int,std::string>(std::__invoke_other,main::{lambda(int,int,std::string)#1} &,int,int,std::string &&)+72↓p
+.text:000000000040533A
+.text:000000000040533A var_68          = qword ptr -68h
+.text:000000000040533A var_60          = dword ptr -60h
+.text:000000000040533A var_5C          = dword ptr -5Ch
+.text:000000000040533A var_58          = qword ptr -58h
+.text:000000000040533A var_50          = qword ptr -50h
+.text:000000000040533A var_48          = qword ptr -48h
+.text:000000000040533A var_40          = byte ptr -40h
+.text:000000000040533A var_1C          = dword ptr -1Ch
+.text:000000000040533A var_18          = qword ptr -18h
+.text:000000000040533A var_8           = qword ptr -8
+.text:000000000040533A
+.text:000000000040533A ; __unwind { // __gxx_personality_v0
+.text:000000000040533A                 push    rbp
+.text:000000000040533B                 mov     rbp, rsp
+.text:000000000040533E                 push    rbx
+.text:000000000040533F                 sub     rsp, 68h
+.text:0000000000405343                 mov     [rbp+var_58], rdi
+.text:0000000000405347                 mov     [rbp+var_5C], esi
+.text:000000000040534A                 mov     [rbp+var_60], edx
+.text:000000000040534D                 mov     [rbp+var_68], rcx
+.text:0000000000405351                 mov     eax, [rbp+var_60]
+.text:0000000000405354                 movsxd  rbx, eax
+.text:0000000000405357                 mov     rax, [rbp+var_58]
+.text:000000000040535B                 mov     rax, [rax]
+.text:000000000040535E                 mov     rdi, rax
+.text:0000000000405361                 call    _ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE4sizeEv ; std::string::size(void)
+.text:0000000000405366                 cmp     rbx, rax
+.text:0000000000405369                 setnb   al
+.text:000000000040536C                 test    al, al
+.text:000000000040536E                 jnz     loc_40557C
+.text:0000000000405374                 lea     rax, [rbp+var_5C]
+.text:0000000000405378                 mov     rsi, rax
+.text:000000000040537B                 lea     rax, node_chars
+.text:0000000000405382                 mov     rdi, rax
+.text:0000000000405385                 call    _ZNSt13unordered_mapIicSt4hashIiESt8equal_toIiESaISt4pairIKicEEEixERS5_ ; std::unordered_map<int,char>::operator[](int const&)
+.text:000000000040538A                 movzx   ebx, byte ptr [rax]
+.text:000000000040538D                 mov     rax, [rbp+var_58]
+.text:0000000000405391                 mov     rax, [rax]
+.text:0000000000405394                 mov     edx, [rbp+var_60]
+.text:0000000000405397                 movsxd  rdx, edx
+.text:000000000040539A                 mov     rsi, rdx
+.text:000000000040539D                 mov     rdi, rax
+.text:00000000004053A0                 call    _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEixEm ; std::string::operator[](ulong)
+.text:00000000004053A5                 movzx   eax, byte ptr [rax]
+.text:00000000004053A8                 cmp     bl, al
+.text:00000000004053AA                 setnz   al
+.text:00000000004053AD                 test    al, al
+.text:00000000004053AF                 jnz     loc_40557F
+.text:00000000004053B5                 lea     rax, [rbp+var_5C]
+.text:00000000004053B9                 mov     rsi, rax
+.text:00000000004053BC                 lea     rax, node_chars
+.text:00000000004053C3                 mov     rdi, rax
+.text:00000000004053C6                 call    _ZNSt13unordered_mapIicSt4hashIiESt8equal_toIiESaISt4pairIKicEEEixERS5_ ; std::unordered_map<int,char>::operator[](int const&)
+.text:00000000004053CB                 movzx   eax, byte ptr [rax]
+.text:00000000004053CE                 movsx   edx, al
+.text:00000000004053D1                 mov     rax, [rbp+var_68]
+.text:00000000004053D5                 mov     esi, edx
+.text:00000000004053D7                 mov     rdi, rax
+.text:00000000004053DA                 call    _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEpLEc ; std::string::operator+=(char)
+.text:00000000004053DF                 mov     eax, [rbp+var_60]
+.text:00000000004053E2                 movsxd  rbx, eax
+.text:00000000004053E5                 mov     rax, [rbp+var_58]
+.text:00000000004053E9                 mov     rax, [rax]
+.text:00000000004053EC                 mov     rdi, rax
+.text:00000000004053EF                 call    _ZNKSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE4sizeEv ; std::string::size(void)
+.text:00000000004053F4                 sub     rax, 1
+.text:00000000004053F8                 cmp     rbx, rax
+.text:00000000004053FB                 jnz     short loc_405415
+.text:00000000004053FD                 mov     rax, [rbp+var_58]
+.text:0000000000405401                 mov     rax, [rax+8]
+.text:0000000000405405                 mov     edx, [rax]
+.text:0000000000405407                 mov     eax, [rbp+var_5C]
+.text:000000000040540A                 cmp     edx, eax
+.text:000000000040540C                 jnz     short loc_405415
+.text:000000000040540E                 mov     eax, 1
+.text:0000000000405413                 jmp     short loc_40541A
+
+
+
+b *0x40538d
+r
+print (char)$rbx
+c
+
+
+
+flaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+
+
+flag{tr4v3rs1ngG.graph()_the_m4ze}
