@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>VM2 Server Info</title>
+    <style>
+        body { font-family: monospace; margin: 50px; background: #1e1e1e; color: #00ff00; }
+        .terminal { background: #000; padding: 20px; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <div class="terminal">
+        <h2>$ server-info</h2>
+        <pre>
+VM2 Server Information:
+=======================
+Hostname: vm2.example.local
+IP Address: 192.168.1.20
+Port: 8080
+Status: ACTIVE
+Uptime: Running
+Service: Apache HTTP Server
+Document Root: /var/www/html
+Log Level: Combined
+
+Network Configuration:
+======================
+Interface: enp0s3
+Type: Static IP
+Subnet: 192.168.1.0/24
+Gateway: 192.168.1.1
+
+Architecture Role:
+==================
+- Receives requests from VM4 (Reverse Proxy)
+- Serves HTTP content on port 8080
+- Backend server in DNS → Proxy → Server chain
+        </pre>
+        <p><a href="/" style="color: #00ff00;">← Back to Home</a></p>
+    </div>
+</body>
+</html>
