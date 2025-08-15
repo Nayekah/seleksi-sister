@@ -2,7 +2,7 @@
 
 > Seleksi Asisten Laboratorium Sistem Paralel dan Terdistribusi 2025
 <p align="center">
-    <img src="./doc/TheRecruiterBanner.png">
+    <img src="./etc/explosion.gif">
 </p>
 
 ---
