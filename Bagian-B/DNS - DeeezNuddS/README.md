@@ -32,6 +32,13 @@ supported four Virtual Machines:
 
 - **VM 4**  
   VM4 acts as Proxy, with the static IP Address of 192.168.1.40 (and acts as a firewall too)
+
+### Network Configurations
+   ```bash
+       netmask 255.255.255.0
+       network 192.168.1.0
+       broadcast 192.168.1.255
+   ```
 --- 
 
 ## How to Run <a name="how-to-run"></a>
