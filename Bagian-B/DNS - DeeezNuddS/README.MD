@@ -38,6 +38,7 @@ supported four Virtual Machines:
 
 ### Requirements
 - Debian 13.0.0 (or any distro you like, just improvise)
+- VirtualBox (recommended)
 - Python3
 - Bind9
 - Apache2
