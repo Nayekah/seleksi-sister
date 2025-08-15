@@ -158,3 +158,7 @@
 ---
 GUI demonstrations (Julia Set): 
 
+
+https://github.com/user-attachments/assets/9a95d7f6-968b-4f7d-92bc-0d42b5aad0a1
+
+
