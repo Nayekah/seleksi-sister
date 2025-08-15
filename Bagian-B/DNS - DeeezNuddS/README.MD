@@ -6,12 +6,6 @@
 </p>
     <h3 align="center">What's your DNS?</h3>
 
-## Table of Contents <a name="table-of-contents"></a>
-
-- [About](#about)
-- [Algorithms](#algorithms)
-- [How to Run](#how-to-run)
-
 ---
 
 ## About <a name="about"></a>
@@ -22,46 +16,26 @@
 ---
 
 ## Implementations <a name="algorithms"></a>
-<div align="right">(<a href="#table-of-contents">back to top</a>)</div>
 
 There are 4 Virtual Machines that implemented in Debian 13.0.0 (Trixie), you can refer it to https://www.debian.org/download for the .iso installations
 
 ### Virtual Machines (VMs)  
 We support three classic exact‐match algorithms:
 
-- **Knuth–Morris–Pratt (KMP)**  
-  Builds a “failure” (LPS) table in $O(m)$ for pattern length *m*, then scans the text of length *n* in $O(n)$ without ever backtracking, yielding $O(n+m)$ worst‑case time and O(m) extra space.
+- **VM 1**  
+  VM1 will act as the DNS server, with the static IP Address of 192.168.1.10
 
-- **Boyer–Moore (BM)**  
-  Compares from the pattern’s right end using  Last Occurrence Function to skip ahead. On random text, average time is $Θ(n/m)$, with worst‑case $O(nm+A)$ ($A$=alphabet size), and $O(m + A)$ space.
+- **VM 2**  
+  VM2 act as web server, with the static IP Address of 192.168.1.20
 
-- **Aho–Corasick (AC)**  
-  Builds a trie plus failure links over all patterns (total length M) in $O(M)$, then finds all matches in one pass in $O(n + z)$ ($z$ = matches found), using $O(M)$ space.
+- **VM 3**  
+  VM3 acts as client, the IP implemenetations depends on the user (can be manually defined or using DHCP)
 
-| Algorithm        | Time Complexity      | Space Complexity  | Key Traits                                  |
-| ---------------- | -------------------- | ----------------- | ------------------------------------------- |
-| **KMP**          | $O(n+m)$             | $O(m)$              | Predictable linear scan, no backtracking    |
-| **Boyer–Moore**  | $Θ(n/m)$ avg, $O(nm)$ wc | $O(m+A)$          | Large jumps on mismatch, very fast in practice |
-| **Aho–Corasick** | $O(n + z)$             | $O(Σmᵢ)$            | Multi‑pattern in one scan, ideal for many keywords |
-
-### Fuzzy Matching  
-To catch typos and small variations, we use **Levenshtein Distance**, which counts insertions, deletions, and substitutions between each pattern (length *m*) and every substring of the same length in the text. We also implement early pruning: if the current row’s minimum edit distance already exceeds our allowed maximum, we abort that comparison to save time.
-
-We define a **relative tolerance** \(T = 0.2\). For a pattern of length *m*, the maximum allowed edits is:
-
-
-$\frac{\mathrm{Levenshtein}(a, b)}{\max(\lvert a\rvert, \lvert b\rvert)} \;\le\; T$
-
-By choosing T = 0.2 (based on experiment i.e. trial and error hehe), we allow up to 20 % of the pattern to differ-enough to catch common typos while keeping false positives low. This scaling rule naturally adapts across both short and long keywords.
-
-### Regular Expression (Regex)  
-Regex is used to pinpoint structured sections of the CV-like “Summary,” “Skills,” “Work Experience” (dates & titles), “Education” (graduation year, institution, degree), etc.
-
+- **VM 4**  
+  VM4 acts as proxy, with the static IP Address of 192.168.1.40 (and acts as a firewall too)
 --- 
 
 ## How to Run <a name="how-to-run"></a>
-
-<div align="right">(<a href="#table-of-contents">back to top</a>)</div>  
 
 ### Requirements
 - Python 3.8
