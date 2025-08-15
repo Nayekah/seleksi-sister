@@ -2,17 +2,9 @@
 
 > Seleksi Asisten Laboratorium Sistem Paralel dan Terdistribusi 2025
 <p align="center">
-    <img src="./doc/TheRecruiterBanner.png">
+    <img src="./etc/newjeans-eta.gif">
 </p>
     <h3 align="center">What's your DNS?</h3>
-<p align="center">
-    Leave your moral and ethics, let a rational computer decision scan your applicant's CV
-    <br />
-    <br />
-    <a href="https://github.com/l0stplains/Tubes3_TheRecruiter/releases/">Releases</a>
-    ·
-    <a href="./doc/TheRecruiter.pdf">Project Report & Specification (Bahasa Indonesia)</a>
-</p>
 
 ## Table of Contents <a name="table-of-contents"></a>
 
