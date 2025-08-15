@@ -22,7 +22,7 @@
    ```bash
    nano /etc/network/interfaces
 
-    edit the enp0s3:
+    # Edit the enp0s3:
    
     auto enp0s3
    ```
