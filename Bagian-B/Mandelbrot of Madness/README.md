@@ -67,65 +67,56 @@
 ### Running the Application With `uv`
 1. Clone this repo
    ```bash
-   git clone https://github.com/l0stplains/Tubes3_TheRecruiter.git
+   https://github.com/Nayekah/seleksi-sister.git
    ```
-   > or just clicks button on your git gui if you feel uncomfortable with terminal
+
 2. Navigate to the cloned repository.
    ```bash
-   cd ./Tubes3_TheRecruiter
+   cd seleksi-sister
+   cd "Bagian-B"
+   cd "Mandelbrot of Madness"
+   cd src
    ```
-3. Setup `.env` like [example](./.env.example) with your data
+   
+3. Do
    ```dotenv
-   # Database Configuration
-    DB_HOST=localhost
-    DB_PORT=2025
-    DB_NAME=ats_system
-    DB_USER=gongyoo
-    DB_PASSWORD=REDACTED
-    
-    # MySQL Root
-    MYSQL_ROOT_PASSWORD=REDACTED
-    
-    # Encryption Configuration
-    ENCRYPTION_PASSWORD=REDACTED
+   make cli (to make cli binary)
+   make gui (to make gui binary)
+
+   # Or
+
+   make all (to make both)
    ```
-4. Run `docker-compose` (make sure you have docker instance running)
+   
+4. To run in cli mode, do:
    ```bash
-   docker-compose up -d
+   make run-cli # default
+
+   # Or
+
+   ./mandelbrot [width] [height] [iterations]
    ```
-5. Make sure to use python 3.8:
+
+5. To run in gui mode, do:
    ```bash
-   uv python install 3.8
-   uv python pin 3.8
+   make run-gui # default
+
+   # Or
+
+   ./mandelbrot_gui
    ```
-6. Setup OS-specific library
-    - **Windows**
-      ```bash
-      pip install PyQtWebEngine
-      ```
-    - **Linux**
-      ```bash
-      uv add PyQtWebEngine
-      ```
-    <details>
-        <summary>
-            <i>Why Windows can't use <code>uv</code>?</i>
-        </summary>
-        <br/>
-        The short answer is that <b>it's not compatible</b>. <i>well at least for this project</i>
-        <br/>
-        <br/>
-        Using <code>uv</code> means we need to use a specific version constraints of the library that <b>built for</b> the project python version (3.8). The problem is that PyQtWebEngine version for python 3.8 does not support windows. By using pip install directly it bypass the constraints and install it for the system or venv. 
-    </details>
-7. Place all the CV pdf in `data/` folder at root
-8. Run the seeder to fill the database
+
+6. Cheatsheets for GUI
    ```bash
-   uv run scripts/seeder.py
+   left mouse drag         : zoom
+   right mouse drag        : pan
+   'R' or 's'              : Reset to original position
+   'S' or 's'              : Save the current mandelbrot set view
+   'J' or 'j'              : Save the current position julia set
+   mouse scroll            : zoom in/out (alternative)
+   escape button (esc)     : return to input window
    ```
-9. Run the program:
-   ```bash
-   uv run -m src -d gui
-   ```
+   
 > [!NOTE]
 > If you are planning to develop, you must set your system python to use version 3.8 and install pyqt5-tools
 
