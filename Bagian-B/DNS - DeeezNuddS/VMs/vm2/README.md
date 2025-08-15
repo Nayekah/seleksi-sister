@@ -64,8 +64,21 @@
     chmod 644 /var/www/html/*.html
     chmod 644 /var/www/html/*.json
    ```
+8. Change the network interfaces again
+   ```bash
+   nano /etc/network/interfaces
+
+    edit the enp0s3:
    
-8. Restart and enable the services
+    auto enp0s3
+    iface enp0s3 inet static
+       address 192.168.1.20
+       netmask 255.255.255.0
+       network 192.168.1.0
+       broadcast 192.168.1.255
+   ```
+   
+9. Restart and enable the services
       ```bash
       systemctl restart apache2
       systemctl start apache2
