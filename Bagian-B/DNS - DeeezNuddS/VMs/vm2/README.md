@@ -42,10 +42,10 @@
    ```bash
    nano /etc/apache2/ports.conf
 
-   change the "Listen" to:
+   # Change the "Listen" to:
    Listen 8080
 
-   # then, edit default virtual hosts, this is the simplified ver:
+   # Then, edit default virtual hosts, this is the simplified ver:
     <VirtualHost *:8080>
       ServerAdmin webmaster@localhost
       DocumentRoot /var/www/html
@@ -70,7 +70,7 @@
    ```bash
    nano /etc/network/interfaces
 
-    edit the enp0s3:
+    # Edit the enp0s3:
    
     auto enp0s3
     iface enp0s3 inet static
