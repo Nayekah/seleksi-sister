@@ -75,7 +75,7 @@
       nano ~/reverse-proxy/proxy_manager.py (you can refer it to the proxy_manager.py)
       chmod +x ~/reverse-proxy/proxy_manager.py
 
-      # dont forget to run proxy_manager.py and call setup_firewall()
+      # dont forget to run proxy_manager.py and call setup_firewall(), but don't forget to depoy the nginx first, refer to 10
       ```
       
 7. Change the network interfaces again
@@ -105,6 +105,14 @@
 9. Restart the network
       ```bash
       systemctl restart networking
+      ```
+
+10. Restart and enable the services
+      ```bash
+      systemctl restart nginx
+      systemctl start nginx
+      systemctl enable nginx
+      systemctl status nginx
       ```
 
 > [!NOTE]
