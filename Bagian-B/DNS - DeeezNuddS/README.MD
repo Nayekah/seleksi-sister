@@ -36,13 +36,10 @@ supported four Virtual Machines:
 
 ## How to Run <a name="how-to-run"></a>
 
-### Requirements
+### General Requirements
 - Debian 13.0.0 (or any distro you like, just improvise)
 - VirtualBox (recommended)
-- Python3
-- Bind9
-- Apache2
-- ufw
+
 
 > [!IMPORTANT]
 > This project is managed VirtualBox, so configure the network configurations based on the app you used
