@@ -9,7 +9,6 @@
 ---
 
 ## About <a name="about"></a>
-<div align="right">(<a href="#table-of-contents">back to top</a>)</div>  
 
 <p align="justify">This project implements a simple DNS system running locally in linux using Debian, Bind9, Apache Server, and NGINX </p>
 
@@ -47,6 +46,10 @@ We support three classic exact‐match algorithms:
 
 > [!IMPORTANT]
 > This project is managed VirtualBox, so configure the network configurations based on the app you used
+
+Next, please refer to the each VM's implementations in the VM1-VM4 folder
+
+Demo of the program: 
 
 ---
 
