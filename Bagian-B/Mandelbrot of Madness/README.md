@@ -1,253 +1,133 @@
-# Mandelbrot & Julia Set Generator
+# Mandelbrot of Madness
 
-Generator himpunan Mandelbrot dan Julia yang canggih dengan implementasi serial, paralel CPU, GPU (CUDA), dan GUI interaktif.
-
-## ✨ Fitur Utama
-
-### 🖥️ Implementasi Multiple
-- **Serial**: Implementasi dasar single-thread
-- **Paralel CPU**: Menggunakan OpenMP dan std::thread
-- **GPU CUDA**: Akselerasi menggunakan NVIDIA CUDA
-- **Benchmark**: Perbandingan performa otomatis
-
-### 🎮 GUI Interaktif
-- **Zoom dinamis**: Klik dan drag untuk zoom ke area tertentu
-- **Mode Julia**: Toggle antara Mandelbrot dan Julia set
-- **Real-time**: Perubahan konstanta Julia dengan gerakan mouse
-- **Pan & Navigate**: Navigasi mudah dengan mouse dan keyboard
-
-### 📊 Export & Visualisasi
-- **Format multiple**: Export ke BMP dan PNG
-- **Resolusi tinggi**: Mendukung hingga 4K+ resolution
-- **Coloring dinamis**: Algoritma pewarnaan HSV yang smooth
-
-## 🛠️ Prerequisites
-
-### Dependencies Dasar
-```bash
-# Ubuntu/Debian
-sudo apt-get update
-sudo apt-get install -y libsfml-dev libomp-dev build-essential
-
-# Atau gunakan Makefile
-make install-deps
-```
-
-### CUDA (Opsional)
-```bash
-# Install CUDA toolkit
-make install-cuda
-
-# Atau manual install dari NVIDIA website
-```
-
-## 🚀 Kompilasi & Instalasi
-
-### Build CPU Version (Recommended)
-```bash
-# Clone atau copy semua file ke directory
-make cpu
-```
-
-### Build CUDA Version
-```bash
-# Membutuhkan NVIDIA GPU dan CUDA toolkit
-make cuda
-```
-
-### Build Options Lain
-```bash
-make debug     # Debug version
-make profile   # Profiling version  
-make native    # Optimized untuk CPU saat ini
-```
-
-## 📖 Cara Penggunaan
-
-### GUI Mode (Default)
-```bash
-./mandelbrot_cpu
-# atau
-make gui
-```
-
-#### Kontrol GUI:
-- **Left Click + Drag**: Zoom ke area yang dipilih
-- **Right Click**: Reset view ke default
-- **J**: Toggle antara Mandelbrot dan Julia set
-- **Mouse Move**: Ubah konstanta Julia (mode Julia)
-- **S**: Simpan gambar saat ini
-- **R**: Reset view
-- **ESC**: Keluar
-
-### Benchmark Mode
-```bash
-./mandelbrot_cpu --benchmark
-# atau
-make benchmark
-```
-
-### Command Line Options
-```bash
-./mandelbrot_cpu [options]
-
-Options:
-  --gui, -g        Launch GUI mode (default)
-  --benchmark, -b  Run command line benchmark
-  --help, -h       Show help message
-```
-
-## 📈 Performa & Benchmarking
-
-Program secara otomatis melakukan benchmark untuk semua implementasi:
-
-### Resolusi Testing:
-- **800x600** - Testing dasar
-- **1920x1080** - Full HD
-- **3840x2160** - 4K
-
-### Metrik Performa:
-- **Waktu eksekusi** untuk setiap implementasi
-- **Speedup ratio** paralel vs serial
-- **GPU speedup** vs CPU implementations
-
-### Contoh Output:
-```
-=== BENCHMARK RESULTS ===
-Serial time:           2.456 seconds
-Parallel time (OpenMP): 0.312 seconds
-Parallel speedup:      7.87x
-GPU time (CUDA):       0.089 seconds
-GPU speedup:           27.6x
-========================
-```
-
-## 🎨 Algoritma & Implementasi
-
-### Mandelbrot Set
-Formula: `z_{n+1} = z_n^2 + c`
-- `z_0 = 0`
-- `c` adalah koordinat kompleks pada bidang
-
-### Julia Set  
-Formula: `z_{n+1} = z_n^2 + c`
-- `z_0` adalah koordinat kompleks pada bidang
-- `c` adalah konstanta kompleks (dapat diubah)
-
-### Coloring Algorithm
-- **HSV Color Space**: Memberikan transisi warna yang smooth
-- **Iteration-based**: Warna berdasarkan jumlah iterasi sebelum divergence
-- **Escape radius**: Menggunakan radius 2.0 untuk deteksi divergence
-
-### Parallelization Strategy
-- **Row-based division**: Setiap thread mengerjakan set baris piksel
-- **Dynamic scheduling**: OpenMP dynamic scheduling untuk load balancing
-- **GPU kernel**: CUDA kernel 2D dengan block size 16x16
-
-## 📁 Struktur File
-
-```
-mandelbrot_project/
-├── mandelbrot.h              # Header dengan deklarasi class
-├── mandelbrot.cpp            # Implementasi core algorithm
-├── mandelbrot_gui.cpp        # Implementasi GUI
-├── main.cpp                  # Program utama
-├── Makefile                  # Build system
-├── README.md                 # Dokumentasi ini
-└── output/                   # Directory untuk output images
-    ├── mandelbrot_*.bmp/png  # Generated Mandelbrot sets
-    └── julia_set_*.png       # Generated Julia sets
-```
-
-## 🔧 Kustomisasi & Ekstensibilitas
-
-### Mengubah Parameter Default
-```cpp
-// Di main.cpp atau saat create MandelbrotParams
-MandelbrotParams custom_params(
-    -2.5, 1.5,    // xmin, xmax
-    -2.0, 2.0,    // ymin, ymax  
-    1920, 1080,   // width, height
-    2000          // max_iterations
-);
-```
-
-### Menambah Julia Constants
-```cpp
-// Di main.cpp, tambahkan konstanta Julia menarik
-std::vector<std::complex<double>> julia_constants = {
-    std::complex<double>(-0.7269, 0.1889),  // Dragon
-    std::complex<double>(-0.8, 0.156),      // Rabbit
-    std::complex<double>(-0.4, 0.6),        // Spiral
-    std::complex<double>(0.285, 0.01),      // Airplane
-    // Tambahkan konstanta baru di sini
-};
-```
-
-### Custom Color Schemes
-Modifikasi fungsi `iterations_to_color()` di `mandelbrot.cpp` untuk skema warna berbeda.
-
-## 🐛 Troubleshooting
-
-### GUI Tidak Muncul
-```bash
-# Check SFML installation
-pkg-config --libs sfml-all
-
-# Fallback ke benchmark mode
-./mandelbrot_cpu --benchmark
-```
-
-### CUDA Compilation Error
-```bash
-# Check CUDA installation
-nvcc --version
-
-# Check GPU compatibility
-nvidia-smi
-
-# Build CPU version instead
-make cpu
-```
-
-### Performance Issues
-```bash
-# Check OpenMP support
-echo $OMP_NUM_THREADS
-
-# Set thread count manually
-export OMP_NUM_THREADS=8
-```
-
-### Memory Issues (High Resolution)
-- Reduce resolution untuk testing awal
-- Monitor memory usage: `htop` atau `nvidia-smi`
-- Untuk 4K+: pastikan RAM >= 8GB
-
-## 📊 Sample Results
-
-### Speedup Examples (i7-8700K + RTX 3070):
-- **8-core CPU**: ~6-8x speedup vs serial
-- **GPU CUDA**: ~20-30x speedup vs serial
-- **Memory bandwidth**: GPU lebih efisien untuk resolusi tinggi
-
-### Generated Images:
-- **Mandelbrot**: Classic black set dengan colorful escape regions
-- **Julia Sets**: Berbagai pola menarik tergantung konstanta
-- **High-res**: Detail fraktal yang tajam pada zoom tinggi
-
-## 🔗 Referensi & Credits
-
-- **Mandelbrot Set**: [Wikipedia](https://en.wikipedia.org/wiki/Mandelbrot_set)
-- **Julia Set**: [Wikipedia](https://en.wikipedia.org/wiki/Julia_set)
-- **SFML**: Graphics library untuk GUI
-- **OpenMP**: Parallel programming API
-- **CUDA**: NVIDIA parallel computing platform
-
-## 📝 License
-
-Program ini dibuat untuk tujuan educational dan dapat dimodifikasi sesuai kebutuhan.
+> Seleksi Asisten Laboratorium Sistem Paralel dan Terdistribusi 2025
+<p align="center">
+    <img src="./doc/TheRecruiterBanner.png">
+</p>
 
 ---
 
-**Happy Fractal Exploring! 🌀**
+## About
+<p align="justify">This project implements a high-performance Mandelbrot and Julia set fractal generator with multiple computational backends to demonstrate parallel computing optimization techniques. The system features four distinct implementations: a baseline serial CPU version, a multi-threaded parallel CPU implementation using std::thread, a GPU-accelerated CUDA version, and an interactive SFML-based GUI with real-time exploration capabilities. The generator supports resolutions up to 8000x8000 pixels with up to 10,000 iterations, providing automatic performance benchmarking to showcase speedup improvements from serial execution to massively parallel GPU acceleration. The GUI enables real-time fractal exploration with zoom capabilities up to 50x magnification, pan controls, and interactive Julia set generation through mouse hover, making it both an educational tool for understanding parallel computing concepts and a practical application for mathematical visualization. </p>
+
+---
+
+## Implementations
+
+### CLI (Command Line Interface):
+- **Serial with CPU**  
+  Builds a mandelbrot set with CPU - Serial implementations, up to 8000 x 8000 resolutions and max 10000 iterations (image saving is supported)
+
+- **Parallel with CPU**  
+  Builds a mandelbrot set with CPU - Paralel implementations using std::thread, up to 8000 x 8000 resolutions and max 10000 iterations (image saving is supported)
+
+- **GPU (Cuda)**  
+  Builds a mandelbrot set with GPU using CUDA, up to 8000 x 8000 resolutions and max 10000 iterations (image saving is supported), fast computations
+
+- **Benchmarking**  
+  Showing full informations of the benchmark (all implementations)
+
+
+### GUI (Command Line Interface):
+- **Serial with CPU**  
+  Builds a mandelbrot set with CPU - Serial implementations, up to 2000 x 2000 resolutions and max 10000 iterations (image saving is supported)
+
+- **Parallel with CPU**  
+  Builds a mandelbrot set with CPU - Paralel implementations using std::thread, up to 2000 x 2000 resolutions and max 10000 iterations (image saving is supported)
+
+- **GPU (Cuda)**  
+  Builds a mandelbrot set with GPU using CUDA, up to 2000 x 2000 resolutions and max 10000 iterations (image saving is supported), fast computations
+
+- **Zoom**  
+  Zooming with left mouse to drag intended zoom area, and mouse scroll to zoom in out, 'R' keys shortcut to reset the display. Real-time calculaations
+
+- **Pan**  
+  Panning the mandelbrot set with real time calculations using GPU power
+
+- **Benchmarking**  
+  Showing full informations of the benchmark (all implementations)
+
+- **Julia Set**  
+  Showing the julia set overview when hovering the mouse above the mandelbrot set respect to the cursor positions (top-right minimap). (julia set saving is supported with 'J' keys shortcut)
+
+--- 
+
+## How to Run
+
+### Requirements
+- g++/c++
+- CUDA
+- nvcc (CUDA compiler)
+- Make
+- SFML 2.5.1
+
+> [!IMPORTANT]
+> Make sure to use SFML 2.5.1 Version and setup the nvcc environment correctly.
+
+### Running the Application With `uv`
+1. Clone this repo
+   ```bash
+   git clone https://github.com/l0stplains/Tubes3_TheRecruiter.git
+   ```
+   > or just clicks button on your git gui if you feel uncomfortable with terminal
+2. Navigate to the cloned repository.
+   ```bash
+   cd ./Tubes3_TheRecruiter
+   ```
+3. Setup `.env` like [example](./.env.example) with your data
+   ```dotenv
+   # Database Configuration
+    DB_HOST=localhost
+    DB_PORT=2025
+    DB_NAME=ats_system
+    DB_USER=gongyoo
+    DB_PASSWORD=REDACTED
+    
+    # MySQL Root
+    MYSQL_ROOT_PASSWORD=REDACTED
+    
+    # Encryption Configuration
+    ENCRYPTION_PASSWORD=REDACTED
+   ```
+4. Run `docker-compose` (make sure you have docker instance running)
+   ```bash
+   docker-compose up -d
+   ```
+5. Make sure to use python 3.8:
+   ```bash
+   uv python install 3.8
+   uv python pin 3.8
+   ```
+6. Setup OS-specific library
+    - **Windows**
+      ```bash
+      pip install PyQtWebEngine
+      ```
+    - **Linux**
+      ```bash
+      uv add PyQtWebEngine
+      ```
+    <details>
+        <summary>
+            <i>Why Windows can't use <code>uv</code>?</i>
+        </summary>
+        <br/>
+        The short answer is that <b>it's not compatible</b>. <i>well at least for this project</i>
+        <br/>
+        <br/>
+        Using <code>uv</code> means we need to use a specific version constraints of the library that <b>built for</b> the project python version (3.8). The problem is that PyQtWebEngine version for python 3.8 does not support windows. By using pip install directly it bypass the constraints and install it for the system or venv. 
+    </details>
+7. Place all the CV pdf in `data/` folder at root
+8. Run the seeder to fill the database
+   ```bash
+   uv run scripts/seeder.py
+   ```
+9. Run the program:
+   ```bash
+   uv run -m src -d gui
+   ```
+> [!NOTE]
+> If you are planning to develop, you must set your system python to use version 3.8 and install pyqt5-tools
+
+---
+
