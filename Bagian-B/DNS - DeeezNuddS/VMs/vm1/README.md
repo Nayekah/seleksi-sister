@@ -4,7 +4,6 @@
 ---
 ### Requirements
 - Linux distro (Recommended: Debian 13.0.0)
-- Python 3.8
 - Bind9
 
 </br>
