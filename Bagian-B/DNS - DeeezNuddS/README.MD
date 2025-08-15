@@ -51,5 +51,3 @@ Next, please refer to the each VM's implementations in the VM1-VM4 folder
 
 Demo of the program: 
 
----
-
