@@ -26,15 +26,18 @@
    
     auto enp0s3
    ```
+   
 3. Restart networking
    ```
    systemctl restart networking
    ```
+   
 4. Install Apache2
    ```bash
     apt update
     apt install apache2 -y
    ```
+   
 5. Configure Apache2 to port 8080:
    ```bash
    nano /etc/apache2/ports.conf
@@ -51,10 +54,8 @@
       ErrorLog ${APACHE_LOG_DIR}/error.log
       CustomLog ${APACHE_LOG_DIR}/access.log combined
     </VirtualHost>
-   
-   
-   
    ```
+   
 6. Make the HTTP content (implemented in the repository, you can refer it to index.html, test.html, info.html, and status.json)
 
 7. Set the html and json file permissions
@@ -64,6 +65,7 @@
     chmod 644 /var/www/html/*.html
     chmod 644 /var/www/html/*.json
    ```
+   
 8. Change the network interfaces again
    ```bash
    nano /etc/network/interfaces
@@ -76,6 +78,9 @@
        netmask 255.255.255.0
        network 192.168.1.0
        broadcast 192.168.1.255
+
+   # Then, restart the network:
+   systemctl restart networking
    ```
    
 9. Restart and enable the services
