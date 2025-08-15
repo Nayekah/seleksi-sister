@@ -19,7 +19,7 @@
 There are 4 Virtual Machines that implemented in Debian 13.0.0 (Trixie), you can refer it to https://www.debian.org/download for the .iso installations
 
 ### Virtual Machines (VMs)  
-We support three classic exact‐match algorithms:
+supported four Virtual Machines:
 
 - **VM 1**  
   VM1 will act as the DNS server, with the static IP Address of 192.168.1.10
