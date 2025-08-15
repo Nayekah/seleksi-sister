@@ -11,6 +11,7 @@
 
 > [!NOTE]
 > Don't forget to setup your linux distro environment first, Debian is recommended
+---
 
 ### Setting up the VMs
 1. Access the root privilege with this commands
