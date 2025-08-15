@@ -64,7 +64,7 @@
 > [!IMPORTANT]
 > Make sure to use SFML 2.5.1 Version and setup the nvcc environment correctly.
 
-### Running the Application With `uv`
+### Running the Application
 1. Clone this repo
    ```bash
    https://github.com/Nayekah/seleksi-sister.git
@@ -116,9 +116,45 @@
    mouse scroll            : zoom in/out (alternative)
    escape button (esc)     : return to input window
    ```
-   
-> [!NOTE]
-> If you are planning to develop, you must set your system python to use version 3.8 and install pyqt5-tools
+
+## Benchmark and Results
+- 500x500 resolutions, 1000 iterations
+  
+| Implementation        | Time Taken (s)      | Speed Up  | Throughput                                  |
+| ---------------- | -------------------- | ----------------- | ------------------------------------------- |
+| **Serial - CPU**          | 0.171             | 1.00x              | 1.46e+06 px/s    |
+| **Paralel - CPU**  | 0.074 | 2.31x          | 3.38e+06 px/s |
+| **CUDA** | 0.009             | 19.00x            | 2.78e+07 px/s |
+<img width="251" height="251" alt="Screenshot 2025-08-15 180546" src="https://github.com/user-attachments/assets/4ea4473b-c4ba-446a-8782-3a0f28effe35" />
+
+- 1000x1000 resolutions, 5000 iterations
+  
+| Implementation        | Time Taken (s)      | Speed Up  | Throughput                                  |
+| ---------------- | -------------------- | ----------------- | ------------------------------------------- |
+| **Serial - CPU**          | 3.003             | 1.00x              | 3.33e+05 px/s    |
+| **Paralel - CPU**  | 1.169 | 2.57x         | 8.55e+05 px/s |
+| **CUDA** | 0.072             | 41.71x            | 1.39e+07 px/s |
+<img width="446" height="450" alt="Screenshot 2025-08-15 180725" src="https://github.com/user-attachments/assets/43f6ab38-e37f-48f9-bcd7-c1b2e06f4a46" />
+
+- 1920x1080 resolutions, 8000 iterations
+  
+| Implementation        | Time Taken (s)      | Speed Up  | Throughput                                  |
+| ---------------- | -------------------- | ----------------- | ------------------------------------------- |
+| **Serial - CPU**          | 9.766             | 1.00x              | 2.12e+05 px/s    |
+| **Paralel - CPU**  | 3.775 | 2.59x         | 5.49e+05 px/s |
+| **CUDA** | 0.191             | 51.13x            | 1.09e+07 px/s |
+<img width="795" height="449" alt="Screenshot 2025-08-15 180823" src="https://github.com/user-attachments/assets/add957dc-071a-4346-a6e8-24ecd0b0848a" />
+
+- 3000x3000 resolutions, 10000 iterations
+  
+| Implementation        | Time Taken (s)      | Speed Up  | Throughput                                  |
+| ---------------- | -------------------- | ----------------- | ------------------------------------------- |
+| **Serial - CPU**          | 54.311             | 1.00x              | 1.66e+05 px/s    |
+| **Paralel - CPU**  | 20.568 | 2.64x         | 4.38e+05 px/s |
+| **CUDA** | 0.910            | 59.68x            | 9.89e+06 px/s |
+<img width="451" height="447" alt="Screenshot 2025-08-15 180916" src="https://github.com/user-attachments/assets/31c8db85-526f-443e-8b56-ba82dd57c92b" />
+
 
 ---
+GUI demonstrations (Julia Set): 
 
