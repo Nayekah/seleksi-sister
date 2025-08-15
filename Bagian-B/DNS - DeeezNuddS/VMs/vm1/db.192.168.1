@@ -1,0 +1,16 @@
+;
+; BIND reverse data file for 192.168.1.x
+;
+$TTL    604800
+@       IN      SOA     ns1.example.local. admin.example.local. (
+                     2024081201         ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+;
+@       IN      NS      ns1.example.local.
+10      IN      PTR     ns1.example.local.
+20      IN      PTR     server.example.local.
+30      IN      PTR     client.example.local.
+40      IN      PTR     proxy.example.local.
