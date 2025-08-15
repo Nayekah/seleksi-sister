@@ -8,7 +8,6 @@
 
 ## Table of Contents <a name="table-of-contents"></a>
 
-- [The Team](#team)
 - [About](#about)
 - [Algorithms](#algorithms)
 - [How to Run](#how-to-run)
@@ -22,12 +21,12 @@
 
 ---
 
-## Algorithms <a name="algorithms"></a>
+## Implementations <a name="algorithms"></a>
 <div align="right">(<a href="#table-of-contents">back to top</a>)</div>
 
-Our CV parser provides three exact string‑matching techniques, a fuzzy matcher for typo‑tolerance, and targeted regex extraction.
+There are 4 Virtual Machines that implemented in Debian 13.0.0 (Trixie), you can refer it to https://www.debian.org/download for the .iso installations
 
-### Pattern Matching  
+### Virtual Machines (VMs)  
 We support three classic exact‐match algorithms:
 
 - **Knuth–Morris–Pratt (KMP)**  
