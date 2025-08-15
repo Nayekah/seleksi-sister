@@ -22,16 +22,16 @@ There are 4 Virtual Machines that implemented in Debian 13.0.0 (Trixie), you can
 supported four Virtual Machines:
 
 - **VM 1**  
-  VM1 will act as the DNS server, with the static IP Address of 192.168.1.10
+  VM1 acts as the DNS server, with the static IP Address of 192.168.1.10
 
 - **VM 2**  
-  VM2 act as web server, with the static IP Address of 192.168.1.20
+  VM2 acts as Web Server, with the static IP Address of 192.168.1.20
 
 - **VM 3**  
-  VM3 acts as client, the IP implemenetations depends on the user (can be manually defined or using DHCP)
+  VM3 acts as Client, the IP implemenetations depends on the user (can be manually defined or using DHCP)
 
 - **VM 4**  
-  VM4 acts as proxy, with the static IP Address of 192.168.1.40 (and acts as a firewall too)
+  VM4 acts as Proxy, with the static IP Address of 192.168.1.40 (and acts as a firewall too)
 --- 
 
 ## How to Run <a name="how-to-run"></a>
@@ -40,8 +40,7 @@ supported four Virtual Machines:
 - Debian 13.0.0 (or any distro you like, just improvise)
 - Python3
 - Bind9
-- Apache Server
-- Nginx
+- Apache2
 - ufw
 
 > [!IMPORTANT]
