@@ -10,7 +10,7 @@
 
 ## About <a name="about"></a>
 
-<p align="justify">This project implements a simple DNS system running locally in linux using Debian, Bind9, Apache Server, and NGINX </p>
+<p align="justify">This project implements a simple DNS system running with internal network in linux using Debian, Bind9, Apache Server, and NGINX </p>
 
 ---
 
