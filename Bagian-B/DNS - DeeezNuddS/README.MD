@@ -47,7 +47,7 @@ supported four Virtual Machines:
 > [!IMPORTANT]
 > This project is managed VirtualBox, so configure the network configurations based on the app you used
 
-Next, please refer to the each VM's implementations in the VM1-VM4 folder
+Next, please refer to the each VM's implementations in the VMs folder
 
 Demo of the program: 
 
