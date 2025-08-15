@@ -15,52 +15,10 @@
 
 ---
 
-## The Team <a name="team"></a>
-<div align="right">(<a href="#table-of-contents">back to top</a>)</div> 
-
-<table>
-       <tr align="left">
-         <td><b>NIM</b></td>
-         <td><b>Name</b></td>
-         <td align="center"><b>GitHub</b></td>
-       </tr>
-       <tr align="left">
-         <td>13523002</td>
-         <td>Refki Alfarizi</td>
-         <td align="center" >
-           <div style="margin-right: 20px;">
-           <a href="https://github.com/l0stplains" ><img src="https://avatars.githubusercontent.com/u/78079998?v=4" width="48px;" alt=""/> <br/> <sub><b> @l0stplains </b></sub></a><br/>
-           </div>
-         </td>
-       </tr>
-       <tr align="left">
-         <td>13523085</td>
-         <td>Muhammad Jibril Ibrahim</td>
-         <td align="center" >
-           <div style="margin-right: 20px;">
-           <a href="https://github.com/BoredAngel" ><img src="https://avatars.githubusercontent.com/u/168176400?v=4" width="48px;" alt=""/> <br/> <sub><b> @BoredAngel </b></sub></a><br/>
-           </div>
-         </td>
-       </tr>
-         <tr align="left">
-         <td>13523090</td>
-         <td>Nayaka Ghana Subrata</td>
-         <td align="center" >
-           <div style="margin-right: 20px;">
-           <a href="https://github.com/Nayekah" ><img src="https://avatars.githubusercontent.com/u/138268904?v=4" width="48px;" alt=""/> <br/> <sub><b> @Nayekah </b></sub></a><br/>
-           </div>
-         </td>
-       </tr>
-</table>
-
----
-
 ## About <a name="about"></a>
 <div align="right">(<a href="#table-of-contents">back to top</a>)</div>  
 
-<p align="justify">This project is the third and last milestone project of 2025 IF2211 Algorithm Strategy course at <a href="https://itb.ac.id" target="_blank">Institut Teknologi Bandung</a>.</p>
-
-<p align="justify">This project implements a simplified Applicant Tracking System (ATS) designed to extract and analyze digital CVs using pattern matching techniques. The system processes PDF documents by converting them into plain text, then searches for user-specified keywords using the Knuth-Morris-Pratt, Boyer-Moore, or Aho-Corasick string matching algorithm. If no exact matches are found, the system performs fuzzy matching based on Levenshtein Distance, with a configurable similarity threshold. It also extract applicants data summary using RegEx. </p>
+<p align="justify">This project implements a simple DNS system running locally in linux using Debian, Bind9, Apache Server, and NGINX </p>
 
 ---
 
