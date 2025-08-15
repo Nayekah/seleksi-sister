@@ -26,15 +26,18 @@
    
     auto enp0s3
    ```
+   
 3. Restart networking
    ```
    systemctl restart networking
    ```
+   
 4. Install Bind9
    ```bash
     apt update
     apt install bind9 bind9-utils bind9-doc dnsutils -y
    ```
+   
 5. Configure the Bind9:
    ```bash
    nano /etc/bind/named.conf.local
@@ -120,11 +123,12 @@
       named-checkzone example.local /etc/bind/db.example.local
       named-checkzone 1.168.192.in-addr.arpa /etc/bind/db.192.168.1
       ```
-7. Change the network interfaces again
+      
+7. Change the network interfaces again and restart the network
    ```bash
    nano /etc/network/interfaces
 
-    edit the enp0s3:
+    # Edit the enp0s3:
    
     auto enp0s3
     iface enp0s3 inet static
@@ -132,6 +136,9 @@
        netmask 255.255.255.0
        network 192.168.1.0
        broadcast 192.168.1.255
+
+   # Then, restart the network:
+   systemctl restart networking
    ```
    
 8. Restart and enable the services
